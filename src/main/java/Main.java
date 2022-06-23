@@ -1,9 +1,12 @@
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-public class Main {
 
+public class Main {
     public static void main(String[] args) throws Exception {
+//        PropertyConfigurator.configure("path");
+        org.slf4j.Logger logger = org.slf4j.LoggerFactory.getLogger(Main.class);
+
         List<Horse> horses = List.of(
                 new Horse("Буцефал", 2.4),
                 new Horse("Туз Пик", 2.5),
@@ -14,6 +17,7 @@ public class Main {
                 new Horse("Вишня", 3)
         );
         Hippodrome hippodrome = new Hippodrome(horses);
+        logger.info("Начало скачек. Количество участников: {}",horses.size());
 
         for (int i = 0; i < 100; i++) {
             hippodrome.move();
@@ -23,6 +27,7 @@ public class Main {
 
         String winnerName = hippodrome.getWinner().getName();
         System.out.println("Победил " + winnerName + "!");
+        logger.info("Окончание скачек. Победитель: {}",winnerName);
     }
 
     private static void watch(Hippodrome hippodrome) throws Exception {
