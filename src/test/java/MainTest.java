@@ -7,8 +7,8 @@ import org.junit.jupiter.api.Timeout;
 class MainTest {
     @Test
     @Timeout(value = 22)
-    void mainTest(){
-
+    void mainTest() throws Exception{
+        Main.main(null);
     }
 
 }
